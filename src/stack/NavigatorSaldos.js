@@ -35,6 +35,7 @@ export default function NavigatorSaldos() {
     >
       <Stack.Screen
         options={{
+          headerShown: false,
           title: "Mis Saldos",
           headerLeft: () => <HeaderDrawer onPress={() => navigation.openDrawer()} />,
         }}

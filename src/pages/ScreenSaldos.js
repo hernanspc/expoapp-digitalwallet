@@ -1,11 +1,12 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LinearGradient } from 'expo-linear-gradient';
-import { ActionCenter, ProfitIndicator } from '../components';
+import { ActionCenter, Header, ProfitIndicator } from '../components';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
+import { COLORS, icons, SIZES } from '../../constants';
 
 const ScreenSaldos = () => {
   const navigation = useNavigation();
@@ -19,7 +20,50 @@ const ScreenSaldos = () => {
 
   return (
     <View style={{ flex: 1 }} >
+      {/* Header */}
       <LinearGradient start={{ x: 0.0, y: 0.4 }} end={{ x: 0.5, y: 1.0 }} location={[0, 1]} colors={['#2D97DA', '#2249D6']} style={{ flex: 1.2, flexDirection: 'column' }} >
+        <Header
+          containerStyle={{
+            height: 50,
+            paddingHorizontal: SIZES.padding,
+            marginTop: 40,
+            alignItems: 'center',
+          }}
+          title={''}
+          leftComponent={
+            <TouchableOpacity
+              style={{
+                width: 40,
+                height: 40,
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderWidth: 1,
+                borderColor: COLORS.white,
+                // backgroundColor: 'white',
+                borderRadius: SIZES.radius,
+              }}
+              onPress={() => navigation.openDrawer()}
+            >
+              <Image source={icons.menu} />
+            </TouchableOpacity>
+          }
+        // rightComponent={
+        //   <TouchableOpacity
+        //     style={{
+        //       borderRadius: SIZES.radius,
+        //       alignItems: 'center',
+        //       justifyContent: 'center',
+        //     }}
+        //   >
+        //     <Image
+        //       // source={dummyData.myProfile?.profile_image}
+        //       source={{ uri: 'https://yt3.ggpht.com/vPYy-zeU9o6j98WyhS_r5HkMelB9vD--AwzUKB0Xd7Wcm5Qhza4iwOyS8fiGjawcNV3y17a8=s88-c-k-c0x00ffffff-no-rj-mo' }}
+        //       style={{ width: 40, height: 40, borderRadius: SIZES.radius }}
+        //     />
+
+        //   </TouchableOpacity>
+        // }
+        />
         <View style={{ flexDirection: 'column', marginTop: hp('10%'), paddingHorizontal: '5%' }} >
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }} >
             {/* Welcome message and name */}
