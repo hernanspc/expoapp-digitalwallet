@@ -7,6 +7,7 @@ import { getUser } from "../graphql/queries";
 import { setChatRooms } from "../features/chatRooms";
 import { API_BASE_URL, EMPRESA_APK } from "../utils/constants";
 import { apis } from "../utils/const";
+import * as Haptics from 'expo-haptics';
 
 const AuthContext = React.createContext({
   authState: "default",
@@ -68,6 +69,9 @@ function AuthProvider({ children }) {
         .then((response) => response.json())
         .then((data) => {
           if (data?.length > 0) {
+            Haptics.notificationAsync(
+              Haptics.NotificationFeedbackType.Success
+            )
             const obj = {
               ID: data[0].ID,
               APELLIDOS_Y_NOMBRES: data[0].APELLIDOS_Y_NOMBRES,
@@ -85,6 +89,9 @@ function AuthProvider({ children }) {
             )
             setAuthState("signedIn");
           } else {
+            Haptics.notificationAsync(
+              Haptics.NotificationFeedbackType.Error
+            )
             return;
           }
         })
@@ -118,7 +125,7 @@ function AuthProvider({ children }) {
       // }
       setIsLoading(false);
       console.log("by context user signed In");
-      setAuthState("signedIn");
+      // setAuthState("signedIn");
     } catch (e) {
       alert(e.message);
       setIsLoading(false);
