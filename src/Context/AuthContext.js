@@ -8,6 +8,7 @@ import { setChatRooms } from "../features/chatRooms";
 import { API_BASE_URL, EMPRESA_APK } from "../utils/constants";
 import { apis } from "../utils/const";
 import * as Haptics from 'expo-haptics';
+import { useToast } from "native-base";
 
 const AuthContext = React.createContext({
   authState: "default",
@@ -45,6 +46,8 @@ function AuthProvider({ children }) {
   const [lastName, setLastName] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const dispatch = useDispatch();
+  const toast = useToast();
+
 
   async function handleSignIn() {
     const body = {
@@ -69,6 +72,9 @@ function AuthProvider({ children }) {
         .then((response) => response.json())
         .then((data) => {
           if (data?.length > 0) {
+            toast.show({
+              description: "Bienvenido",
+            })
             Haptics.notificationAsync(
               Haptics.NotificationFeedbackType.Success
             )
@@ -92,6 +98,9 @@ function AuthProvider({ children }) {
             Haptics.notificationAsync(
               Haptics.NotificationFeedbackType.Error
             )
+            toast.show({
+              description: "Contraseña ó Password Incorrecta",
+            })
             return;
           }
         })
