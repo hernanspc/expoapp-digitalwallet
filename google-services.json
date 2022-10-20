@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "975387723270",
+    "project_id": "digitalwallet-b205e",
+    "storage_bucket": "digitalwallet-b205e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975387723270:android:d209b89cb588cf98f86587",
+        "android_client_info": {
+          "package_name": "com.hernanpormachideveloper.digitalwallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "975387723270-p761jblkeggc666qd7nf1r7mgs71837b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIx-haaU8Oti3J5r7uY8x7_LPvH6dxFso"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "975387723270-p761jblkeggc666qd7nf1r7mgs71837b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
