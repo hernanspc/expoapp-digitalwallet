@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LinearGradient } from 'expo-linear-gradient';
-import { ProfitIndicator } from '../components';
+import { ActionCenter, ProfitIndicator } from '../components';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 
@@ -43,17 +43,24 @@ const ScreenSaldos = () => {
             {/* Amount */}
             <View style={{ flexDirection: 'column' }} >
               <Text style={{ color: '#fff', fontSize: 28, fontFamily: 'Roboto-Bold' }} >$32,7456.68</Text>
-              <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Roboto-Regular-Italic', fontSize: 14 }} >Updated 2 mins ago</Text>
             </View>
 
             {/* profit loss indicator */}
             {/* profit loss indicator */}
-            <ProfitIndicator type="I" percentage_change={100} />
+            <ProfitIndicator type="I" percentage_change={20} />
           </View>
         </View>
 
       </LinearGradient>
 
+      <View style={{ flex: 2.5, backgroundColor: '#fff', paddingHorizontal: wp('5%') }} >
+        <View style={{ flexDirection: 'row', backgroundColor: '#fff', height: hp('13%'), width: '100%', alignItems: 'center', justifyContent: 'space-around', borderRadius: 10, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)', elevation: 10, shadowColor: '#000', shadowRadius: 10, marginTop: -25 }} >
+          <ActionCenter img_src={require('../assets/icons/top-up.png')} img_text="Top-Up" />
+          <ActionCenter img_src={require('../assets/icons/buy.png')} img_text="Buy" />
+          <ActionCenter img_src={require('../assets/icons/withdraw.png')} img_text="WithDraw" />
+        </View>
+
+      </View>
     </View>
   )
 }
