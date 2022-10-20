@@ -7,6 +7,7 @@ import { ActionCenter, Header, ProfitIndicator } from '../components';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import { COLORS, icons, SIZES } from '../../constants';
+import MenuRight from '../assets/svg/Icons/menu-right';
 
 const ScreenSaldos = () => {
   const navigation = useNavigation();
@@ -44,7 +45,8 @@ const ScreenSaldos = () => {
               }}
               onPress={() => navigation.openDrawer()}
             >
-              <Image source={icons.menu} />
+              {/* <Image source={icons.menu} /> */}
+              <MenuRight />
             </TouchableOpacity>
           }
         // rightComponent={
