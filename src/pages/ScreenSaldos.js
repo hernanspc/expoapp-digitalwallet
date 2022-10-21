@@ -96,7 +96,7 @@ const ScreenSaldos = () => {
       .then((response) => {
         // console.log("✨ TSP_CARGAR_DATOS_MENU_TRANSFERIDOR ", response);
         setLoadingData(false);
-        setSaldos(response);
+        setSaldos(response.Table1);
         setOperations(response.Table)
       });
   };
@@ -262,7 +262,9 @@ const ScreenSaldos = () => {
           borderWidth: 1,
           borderColor: 'transparent',
           // borderColor: 'rgba(255,255,255,0.1)',
-          elevation: 10, shadowColor: '#000', shadowRadius: 10,
+          elevation: 10,
+          shadowColor: '#000',
+          shadowRadius: 10,
           // marginTop: -25
           marginTop: -25
         }} >
@@ -276,27 +278,13 @@ const ScreenSaldos = () => {
           paddingBottom: 20
         }}>
           <FlatList
-            data={CRYPTOCURRENCIES}
+            data={saldos}
             // style={{ height: (Dimensions.get('window').height / 2) - 10 }}
             ItemSeparatorComponent={() => <View style={{ marginVertical: 4 }}></View>}
-            renderItem={({ item }) => <CoinCard item={item} onPress={() => nav.navigate("walletdetails", item)} />}
+            renderItem={({ item }) => <CoinCard item={item} onPress={() => { }} />}
             keyExtractor={(item) => item.id}
             showsVerticalScrollIndicator={false}
           />
-          {/* <ScrollView
-          showsVerticalScrollIndicator={false}
-        >
-          <CardItem />
-          <CardItem />
-          <CardItem />
-          <CardItem />
-          <CardItem />
-          <CardItem />
-          <CardItem />
-          <CardItem />
-          <CardItem />
-          <CardItem />
-        </ScrollView> */}
         </View>
       </View>
     </View>
