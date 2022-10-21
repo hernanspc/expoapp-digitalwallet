@@ -17,6 +17,7 @@ import wallet from '../assets/images/walletimg.png';
 import { WalletCoinCard } from '../components/WalletCoinCard';
 import { CoinCard } from '../components/CoinCard';
 import { FlatList } from 'native-base';
+import Card from '../components/Card';
 
 const SectionTop = ({ operations }) => {
 
@@ -301,6 +302,9 @@ const ScreenSaldos = () => {
             </View>
           </View>
         </View>
+        {/* <View style={{ paddingVertical: 5, }}>
+          <Card />
+        </View> */}
 
         <View style={{
           marginTop: 10,
