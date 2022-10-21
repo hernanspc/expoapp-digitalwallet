@@ -18,8 +18,9 @@ import etherium from '../assets/images/etherium.png';
 import bitcoin from '../assets/images/bitcoin.png';
 import { WalletCoinCard } from '../components/WalletCoinCard';
 import { CoinCard } from '../components/CoinCard';
-import { FlatList } from 'native-base';
+import { FlatList, useColorMode } from 'native-base';
 import Card from '../components/Card';
+import Colors from '../../constants/colors';
 
 const SectionTop = ({ operations }) => {
 
@@ -176,11 +177,18 @@ const ScreenSaldos = () => {
     }
   ];
 
+  const {
+    colorMode,
+  } = useColorMode();
+  console.log('colorMode ', colorMode)
 
   return (
     <View style={{ flex: 1 }} >
       {/* Header */}
-      <LinearGradient start={{ x: 0.0, y: 0.4 }} end={{ x: 0.5, y: 1.0 }} location={[0, 1]} colors={['#2D97DA', '#2249D6']} style={{ flex: 1.2, flexDirection: 'column' }} >
+      <LinearGradient start={{ x: 0.0, y: 0.4 }} end={{ x: 0.5, y: 1.0 }} location={[0, 1]}
+        colors={[Colors[colorMode].backgroundDefaultAuth, Colors[colorMode].backgroundDefaultAuthSecond]}
+        style={{ flex: 1.2, flexDirection: 'column' }}
+      >
         <Header
           containerStyle={{
             height: 50,
