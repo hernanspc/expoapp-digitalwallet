@@ -21,25 +21,25 @@ const SectionTop = ({ operations }) => {
       title: operations
         ? operations[0]?.CANT_TRANS_TRANSFERIDO
         : null,
-      text: 'transferido'
+      // text: 'Transferido'
     },
     {
       id: 2,
       background: "#ECDA23",
       title: operations ? operations[0]?.CANT_TRANS_PEND : null,
-      text: 'Trans Pen'
+      // text: 'Trans Peniente'
     },
     {
       id: 3,
       background: "#B695C0",
       title: operations ? operations[0]?.CANT_TRANS_DIST : null,
-      text: 'Dist'
+      // text: 'Distribuida'
     },
     {
       id: 4,
       background: "#FF0000",
       title: operations ? operations[0]?.DEP_PENDIENTE : null,
-      text: 'Pend'
+      // text: 'Pendiente'
     },
   ];
 
@@ -106,7 +106,7 @@ const ScreenSaldos = () => {
   return (
     <View style={{ flex: 1 }} >
       {/* Header */}
-      <LinearGradient start={{ x: 0.0, y: 0.4 }} end={{ x: 0.5, y: 1.0 }} location={[0, 1]} colors={['#2D97DA', '#2249D6']} style={{ flex: 1.0, flexDirection: 'column' }} >
+      <LinearGradient start={{ x: 0.0, y: 0.4 }} end={{ x: 0.5, y: 1.0 }} location={[0, 1]} colors={['#2D97DA', '#2249D6']} style={{ flex: 1.2, flexDirection: 'column' }} >
         <Header
           containerStyle={{
             height: 50,
@@ -180,11 +180,8 @@ const ScreenSaldos = () => {
 
       <View style={{ flex: 2.5, backgroundColor: '#fff', paddingHorizontal: wp('5%') }} >
         <View style={{ flexDirection: 'row', backgroundColor: '#fff', height: hp('13%'), width: '100%', alignItems: 'center', justifyContent: 'space-around', borderRadius: 10, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)', elevation: 10, shadowColor: '#000', shadowRadius: 10, marginTop: -25 }} >
-
           <SectionTop operations={operations} />
-
         </View>
-
       </View>
     </View>
   )
