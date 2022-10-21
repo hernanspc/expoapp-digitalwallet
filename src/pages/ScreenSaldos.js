@@ -14,6 +14,8 @@ import { useSelector } from 'react-redux';
 import CardItem from '../components/CardItem';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import wallet from '../assets/images/walletimg.png';
+import etherium from '../assets/images/etherium.png';
+import bitcoin from '../assets/images/bitcoin.png';
 import { WalletCoinCard } from '../components/WalletCoinCard';
 import { CoinCard } from '../components/CoinCard';
 import { FlatList } from 'native-base';
@@ -53,7 +55,6 @@ const SectionTop = ({ operations }) => {
   return (
     <>
       {BadgeData.map((item, index) => {
-        // console.log(' i ', item)
         return (
           <ActionCenter key={item.id} backgroundColor={item.background} value={item.title} img_text={item.text} />
         )
@@ -70,7 +71,6 @@ const ScreenSaldos = () => {
   const navigation = useNavigation();
   const user = useSelector((state) => state.user)
 
-  console.log('user ', user)
   const cargarDatosMenu = async () => {
     const postBody = {
       empresa: EMPRESA_APK,
@@ -120,7 +120,7 @@ const ScreenSaldos = () => {
       percentage: "+ 4.32%",
       difference: "$ 5.44",
       decreased: false,
-      imgsrc: wallet
+      imgsrc: bitcoin
     },
     {
       id: 2,
@@ -130,7 +130,7 @@ const ScreenSaldos = () => {
       percentage: "+ 4.32%",
       decreased: false,
       difference: "$ 3.44",
-      imgsrc: wallet
+      imgsrc: etherium
     },
     {
       id: 3,
@@ -150,7 +150,7 @@ const ScreenSaldos = () => {
       percentage: "- 4.32%",
       decreased: true,
       difference: "$ 7.44",
-      imgsrc: wallet
+      imgsrc: bitcoin
     }
     ,
     {
@@ -161,7 +161,7 @@ const ScreenSaldos = () => {
       percentage: "- 4.32%",
       decreased: true,
       difference: "$ 7.44",
-      imgsrc: wallet
+      imgsrc: etherium
     }
     ,
     {
@@ -185,7 +185,7 @@ const ScreenSaldos = () => {
           containerStyle={{
             height: 50,
             paddingHorizontal: SIZES.padding,
-            marginTop: 40,
+            marginTop: 35,
             alignItems: 'center',
           }}
           title={''}
@@ -196,9 +196,10 @@ const ScreenSaldos = () => {
                 height: 40,
                 alignItems: 'center',
                 justifyContent: 'center',
-                borderWidth: 1,
+                borderWidth: 2,
                 borderColor: COLORS.white,
-                // backgroundColor: 'white',
+                // backgroundColor: 'red',
+                // padding: 20,
                 borderRadius: SIZES.radius,
               }}
               onPress={() => navigation.openDrawer()}
@@ -223,7 +224,6 @@ const ScreenSaldos = () => {
         //   </TouchableOpacity>
         // }
         />
-
         <View style={{ flexDirection: 'column', marginTop: hp('1%'), paddingHorizontal: '5%' }} >
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }} >
             <View style={{ flexDirection: 'column' }} >
@@ -244,22 +244,46 @@ const ScreenSaldos = () => {
         {/* <WalletCoinCard item={{ name: "Total Wallet Balance", cryptobalance: "$39.584", imgsrc: wallet }} /> */}
       </LinearGradient>
 
-      <View style={{ flex: 2.5, backgroundColor: '#F5F8FF', paddingHorizontal: wp('5%') }} >
+      <View style={{
+        flex: 2.6,
+        backgroundColor: '#F5F8FF',
+        paddingHorizontal: wp('2%')
+      }} >
         <View style={{
           flexDirection: 'row',
-          backgroundColor: 'white',
-          height: hp('9%'),
+          // backgroundColor: 'pink',
+          paddingTop: 10,
+          height: 60,
+          height: 50,
           width: '100%',
           alignItems: 'center',
           justifyContent: 'space-around',
           borderRadius: 10,
           borderWidth: 1,
-          borderColor: 'rgba(255,255,255,0.1)', elevation: 10, shadowColor: '#000', shadowRadius: 10, marginTop: -25
+          borderColor: 'transparent',
+          // borderColor: 'rgba(255,255,255,0.1)',
+          elevation: 10, shadowColor: '#000', shadowRadius: 10,
+          // marginTop: -25
+          marginTop: -25
         }} >
           <SectionTop operations={operations} />
         </View>
 
-        <ScrollView
+        <View style={{
+          marginTop: 10,
+          backgroundColor: "#F5F8FF",
+          overflow: "hidden",
+          paddingBottom: 20
+        }}>
+          <FlatList
+            data={CRYPTOCURRENCIES}
+            // style={{ height: (Dimensions.get('window').height / 2) - 10 }}
+            ItemSeparatorComponent={() => <View style={{ marginVertical: 4 }}></View>}
+            renderItem={({ item }) => <CoinCard item={item} onPress={() => nav.navigate("walletdetails", item)} />}
+            keyExtractor={(item) => item.id}
+            showsVerticalScrollIndicator={false}
+          />
+          {/* <ScrollView
           showsVerticalScrollIndicator={false}
         >
           <CardItem />
@@ -272,12 +296,10 @@ const ScreenSaldos = () => {
           <CardItem />
           <CardItem />
           <CardItem />
-        </ScrollView>
+        </ScrollView> */}
+        </View>
       </View>
     </View>
-
-
-
 
     // <View style={{ height: "100%", backgroundColor: '#F5F8FF' }}>
     //   <View style={styles.headerbar}>

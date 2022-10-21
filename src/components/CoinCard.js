@@ -7,7 +7,7 @@ export const CoinCard = (props) => {
 
   return (
     <Pressable onPress={props.onPress}>
-      <CustomCard style={{ flexDirection: "row", alignItems: "center", backgroundColor: "#fff", borderRadius: 15, paddingHorizontal: 10, paddingVertical: 20, }}>
+      <CustomCard style={{ flexDirection: "row", alignItems: "center", backgroundColor: "#fff", borderRadius: 15, paddingHorizontal: 10, paddingVertical: 20 }}>
         <View>
           <Image style={{ height: 60, width: 60 }} source={imgsrc}></Image>
         </View>

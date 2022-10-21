@@ -25,6 +25,6 @@ const styles = StyleSheet.create({
     badgeWrapper: {
         width: 40,
         height: 40,
-        borderRadius: 30,
+        borderRadius: 20,
     }
 })
