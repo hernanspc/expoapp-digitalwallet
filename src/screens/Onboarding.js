@@ -57,9 +57,9 @@ export default function Onboarding() {
 
             <Image source={
               theme === 'light' ?
-                require('../assets/images/card_welcome_2.png')
-                :
                 require('../assets/images/card_welcome_1.png')
+                :
+                require('../assets/images/card_welcome_2.png')
             }
               style={{ backgroundColor: theme === 'light' ? "#F5F8FF" : "#373737" }}
             />
