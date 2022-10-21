@@ -49,36 +49,35 @@ const ScreenSaldos = () => {
               <MenuRight />
             </TouchableOpacity>
           }
-        // rightComponent={
-        //   <TouchableOpacity
-        //     style={{
-        //       borderRadius: SIZES.radius,
-        //       alignItems: 'center',
-        //       justifyContent: 'center',
-        //     }}
-        //   >
-        //     <Image
-        //       // source={dummyData.myProfile?.profile_image}
-        //       source={{ uri: 'https://yt3.ggpht.com/vPYy-zeU9o6j98WyhS_r5HkMelB9vD--AwzUKB0Xd7Wcm5Qhza4iwOyS8fiGjawcNV3y17a8=s88-c-k-c0x00ffffff-no-rj-mo' }}
-        //       style={{ width: 40, height: 40, borderRadius: SIZES.radius }}
-        //     />
+          rightComponent={
+            <TouchableOpacity
+              style={{
+                borderRadius: SIZES.radius,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Image
+                // source={dummyData.myProfile?.profile_image}
+                source={{ uri: 'https://yt3.ggpht.com/vPYy-zeU9o6j98WyhS_r5HkMelB9vD--AwzUKB0Xd7Wcm5Qhza4iwOyS8fiGjawcNV3y17a8=s88-c-k-c0x00ffffff-no-rj-mo' }}
+                style={{ width: 40, height: 40, borderRadius: SIZES.radius }}
+              />
 
-        //   </TouchableOpacity>
-        // }
+            </TouchableOpacity>
+          }
         />
-        <View style={{ flexDirection: 'column', marginTop: hp('10%'), paddingHorizontal: '5%' }} >
+        <View style={{ flexDirection: 'column', marginTop: hp('2%'), paddingHorizontal: '5%' }} >
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }} >
             {/* Welcome message and name */}
             <View style={{ flexDirection: 'column' }} >
-              <Text style={{ fontFamily: 'Roboto-Regular', fontSize: 16, color: '#fff' }} >Welcome Back</Text>
+              <Text style={{ fontFamily: 'Roboto-Regular', fontSize: 16, color: '#fff' }} >Bienvenido de nuevo</Text>
               <Text style={{ fontFamily: 'Poppins-SemiBold', color: '#fff', fontSize: 22 }} >Yaser</Text>
             </View>
 
             {/* Bell icon and profile pic */}
-            <View style={{ flexDirection: 'row', alignItems: 'center' }} >
-              <FontAwesome name='bell' size={30} color="#fff" />
+            {/* <View style={{ flexDirection: 'row', alignItems: 'center' }} >
               <Image source={{ uri: 'https://lh3.googleusercontent.com/a/ALm5wu1oHfVK-BQwHbTMZKJpvkWv0D2XgfQTLB_EaVEO=s192-c-rg-br100' }} resizeMode='cover' style={{ width: 40, height: 40, borderRadius: 20, marginLeft: 15 }} />
-            </View>
+            </View> */}
           </View>
 
 
@@ -101,9 +100,10 @@ const ScreenSaldos = () => {
 
       <View style={{ flex: 2.5, backgroundColor: '#fff', paddingHorizontal: wp('5%') }} >
         <View style={{ flexDirection: 'row', backgroundColor: '#fff', height: hp('13%'), width: '100%', alignItems: 'center', justifyContent: 'space-around', borderRadius: 10, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)', elevation: 10, shadowColor: '#000', shadowRadius: 10, marginTop: -25 }} >
-          <ActionCenter img_src={require('../assets/icons/top-up.png')} img_text="Top-Up" />
-          <ActionCenter img_src={require('../assets/icons/buy.png')} img_text="Buy" />
-          <ActionCenter img_src={require('../assets/icons/withdraw.png')} img_text="WithDraw" />
+          <ActionCenter backgroundColor={"#3EBD3B"} value={8} img_text="" />
+          <ActionCenter img_src={require('../assets/icons/buy.png')} img_text="" />
+          <ActionCenter img_src={require('../assets/icons/withdraw.png')} img_text="" />
+          <ActionCenter img_src={require('../assets/icons/withdraw.png')} img_text="" />
         </View>
 
       </View>
