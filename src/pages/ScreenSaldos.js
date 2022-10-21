@@ -105,6 +105,7 @@ const ScreenSaldos = () => {
       const firstLaunch = await AsyncStorage.getItem("@firstLaunch");
       if (firstLaunch === null) navigation.navigate("Onboarding");
     }
+    navigation.navigate("Onboarding");
     checkFirstLaunch();
     cargarDatosMenu();
   }, []);
