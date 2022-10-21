@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useColorScheme } from "react-native";
 import Splash from "./src/screens/Splash";
 import AuthScreen from "./src/screens/Auth";
 import { Provider, useSelector, useDispatch } from "react-redux";
@@ -7,11 +6,12 @@ import { store } from "./src/app/store";
 import { setNotificationHandler } from "expo-notifications";
 import 'react-native-gesture-handler';
 import RootMain from "./RootMain";
-import { NativeBaseProvider, } from "native-base";
+import { extendTheme, NativeBaseProvider, } from "native-base";
 import { ApplicationProvider, IconRegistry, } from '@ui-kitten/components';
 import * as eva from '@eva-design/eva';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { useFonts } from 'expo-font';
+import { useColorScheme } from "react-native";
 
 setNotificationHandler({
   handleNotification: async () => ({
@@ -22,6 +22,7 @@ setNotificationHandler({
 });
 
 export default function Wrapper() {
+
   const [fontsLoaded] = useFonts({
     'Roboto-Black': require('./assets/fonts/Roboto-Black.ttf'),
     'Roboto-BlackItalic': require('./assets/fonts/Roboto-BlackItalic.ttf'),
@@ -45,12 +46,22 @@ export default function Wrapper() {
   if (!fontsLoaded) {
     return null;
   }
+  // const colorScheme = useColorScheme();
+
+  // Define the config
+  const config = {
+    useSystemColorMode: true,
+    // initialColorMode: 'dark',
+  };
+
+  // extend the theme
+  const customTheme = extendTheme({ config });
 
   return (
     <Provider store={store}>
       <ApplicationProvider {...eva} theme={eva.light}>
         <IconRegistry icons={EvaIconsPack} />
-        <NativeBaseProvider>
+        <NativeBaseProvider theme={customTheme} >
           <App />
         </NativeBaseProvider>
       </ApplicationProvider>
@@ -59,11 +70,11 @@ export default function Wrapper() {
 }
 
 function App() {
-
+  const colorScheme = useColorScheme();
 
   const user = useSelector((state) => state.user);
   const [isLoading, setIsLoading] = React.useState(true);
-  const colorScheme = useColorScheme();
+
 
   if (isLoading) return <Splash setIsLoading={setIsLoading} />;
   return user?.ID ? (

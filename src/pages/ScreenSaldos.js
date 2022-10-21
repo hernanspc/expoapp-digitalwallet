@@ -251,8 +251,8 @@ const ScreenSaldos = () => {
       }} >
         <View style={{
           flexDirection: 'row',
-          // backgroundColor: 'pink',
-          paddingTop: 10,
+          backgroundColor: 'white',
+          paddingTop: 15,
           height: 60,
           height: 50,
           width: '100%',
@@ -317,23 +317,7 @@ const ScreenSaldos = () => {
     //       <Card />
     //     </View>
 
-    //     <View style={{
-    //       marginTop: 10,
-    //       backgroundColor: "#F5F8FF",
-    //       overflow: "hidden",
-    //       marginBottom: 10
-    //     }}>
-    //       <FlatList
-    //         data={CRYPTOCURRENCIES}
-    //         style={{ height: (Dimensions.get('window').height / 2) - 10 }}
-    //         ItemSeparatorComponent={() => <View style={{ marginVertical: 8 }}></View>}
-    //         renderItem={({ item }) => <CoinCard item={item} onPress={() => nav.navigate("walletdetails", item)} />}
-    //         keyExtractor={(item) => item.id}
-    //         showsVerticalScrollIndicator={false}
-    //       />
-    //     </View>
     //   </View>
-
     // </View>
   )
 }
