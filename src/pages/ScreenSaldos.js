@@ -180,7 +180,17 @@ const ScreenSaldos = () => {
       </LinearGradient>
 
       <View style={{ flex: 2.5, backgroundColor: '#F5F8FF', paddingHorizontal: wp('5%') }} >
-        <View style={{ flexDirection: 'row', backgroundColor: '#fff', height: hp('13%'), width: '100%', alignItems: 'center', justifyContent: 'space-around', borderRadius: 10, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)', elevation: 10, shadowColor: '#000', shadowRadius: 10, marginTop: -25 }} >
+        <View style={{
+          flexDirection: 'row',
+          backgroundColor: 'white',
+          height: hp('9%'),
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'space-around',
+          borderRadius: 10,
+          borderWidth: 1,
+          borderColor: 'rgba(255,255,255,0.1)', elevation: 10, shadowColor: '#000', shadowRadius: 10, marginTop: -25
+        }} >
           <SectionTop operations={operations} />
         </View>
         <ScrollView
