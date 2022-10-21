@@ -54,17 +54,7 @@ export default function Onboarding() {
       <View style={{ backgroundColor: theme === 'light' ? "#F5F8FF" : "#373737" }} >
         <View style={[styles.logoView, { backgroundColor: theme === 'light' ? "#F5F8FF" : "#373737", paddingBottom: 50, }]}>
           <View onLayout={({ nativeEvent }) => setLayout(nativeEvent?.layout)} style={{ backgroundColor: theme === 'light' ? "#F5F8FF" : "#373737" }}>
-            {/* {layouts && (
-              <Image
-                source={require('../assets/images/card_welcome_1.png')}
-                style={[
-                  styles.cardImg1,
-                  { width: layouts.width, height: layouts.height, backgroundColor: "#FFF" },
-                ]}
-                resizeMode="contain"
-              />
-            )} */}
-            {/* <Image source={require('../assets/images/card_welcome_1.png')} style={{ backgroundColor: "#FFF" }} /> */}
+
             <Image source={
               theme === 'light' ?
                 require('../assets/images/card_welcome_2.png')
@@ -75,27 +65,10 @@ export default function Onboarding() {
             />
           </View>
         </View>
-        {/* <View style={styles.wrapText}>
-          <Text style={styles.textTitle}>
-            Payments anywhere and anytime easily
-          </Text>
-          <Text
-            style={
-              styles.textDesc
-            }>{`Lorem  when an unknown printer took a galley of type and scrambled it to make a type specimen book`}
-          </Text>
-          <View>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => navigation.navigate('Home')}>
-              <Text style={styles.buttonText}>Get Started</Text>
-            </TouchableOpacity>
-          </View>
-        </View> */}
       </View>
 
       {appFeatures.map((feature, index) => (
-        <View key={index} style={styles.itemContainer}>
+        <View key={index} style={[styles.itemContainer, { backgroundColor: theme === 'light' ? "#F5F8FF" : "#373737" }]}>
           <Image source={feature.icon} style={styles.icon} />
           <DefaultView style={styles.textWrapper}>
             <MyText type="caption" style={{ fontWeight: "bold" }}>
@@ -108,7 +81,7 @@ export default function Onboarding() {
 
       <MyButton
         style={{ marginTop: 50 }}
-        title={isLoading ? "Cargando..." : "Continue"}
+        title={isLoading ? "Cargando..." : "Continuar"}
         onPress={handleOnContinue}
       />
     </View>
@@ -192,8 +165,8 @@ const appFeatures = [
   // },
   {
     icon: require("../../assets/bell.png"),
-    title: "Keep updated with notifications",
+    title: "Manténgase actualizado con notificaciones",
     description:
-      "Get notified whenever someone likes your posts or sends you a message",
+      "",
   },
 ];
