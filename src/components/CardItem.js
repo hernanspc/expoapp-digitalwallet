@@ -85,7 +85,7 @@ const CardItem = ({ onPress }) => {
                 </View>
 
             </CustomCard>
-            <View style={{ marginVertical: 1 }}></View>
+            <View style={{ marginVertical: 12 }}></View>
         </Pressable>
     )
 }
