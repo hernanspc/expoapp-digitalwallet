@@ -1,5 +1,7 @@
+import { useColorMode } from 'native-base';
 import * as React from 'react';
 import { View, StyleSheet, Image, Text, Pressable } from 'react-native';
+import { colorsMovistar } from '../../constants/colors';
 import { capitalizarPrimeraLetra, milliFormat } from '../utils/functions';
 import { CustomCard } from './CustomCard';
 
@@ -17,11 +19,23 @@ export const CoinCard = (props) => {
     miliformat.toString().length
   );
 
+  const {
+    colorMode,
+  } = useColorMode();
+
   return (
     <Pressable onPress={props.onPress}>
-      <CustomCard style={{ flexDirection: "row", alignItems: "center", backgroundColor: "#fff", borderRadius: 15, paddingHorizontal: 10, paddingVertical: 20 }}>
+      <CustomCard style={{
+        flexDirection: "row", alignItems: "center",
+        // backgroundColor: "#fff",
+        backgroundColor: colorMode === 'dark' ? 'rgba(22,22,22,0.75)' : 'white',
+        borderRadius: 15, paddingHorizontal: 10, paddingVertical: 20
+      }}>
         <View>
-          <Image style={{ height: 60, width: 60, borderRadius: 30 }} source={{ uri: `https://res.cloudinary.com/dd0myqhyb/image/upload/remesas/bancos/banco_${BANCO_ID}.jpg` }}></Image>
+          <Image style={{
+            height: 60, width: 60, borderRadius: 30,
+            backgroundColor: colorMode === 'dark' ? "#000" : '#F5F8FF',
+          }} source={{ uri: `https://res.cloudinary.com/dd0myqhyb/image/upload/remesas/bancos/banco_${BANCO_ID}.jpg` }}></Image>
         </View>
         <View style={{ flex: 2, marginLeft: 15, marginRight: 8 }}>
           <View style={{ flexDirection: "row", justifyContent: "space-between" }}>

@@ -20,7 +20,7 @@ import { WalletCoinCard } from '../components/WalletCoinCard';
 import { CoinCard } from '../components/CoinCard';
 import { FlatList, useColorMode } from 'native-base';
 import Card from '../components/Card';
-import Colors from '../../constants/colors';
+import Colors, { colorsMovistar } from '../../constants/colors';
 
 const SectionTop = ({ operations }) => {
 
@@ -180,7 +180,6 @@ const ScreenSaldos = () => {
   const {
     colorMode,
   } = useColorMode();
-  console.log('colorMode ', colorMode)
 
   return (
     <View style={{ flex: 1 }} >
@@ -254,12 +253,13 @@ const ScreenSaldos = () => {
 
       <View style={{
         flex: 2.6,
-        backgroundColor: '#F5F8FF',
+        backgroundColor: colorMode === 'dark' ? "#000" : '#F5F8FF',
         paddingHorizontal: wp('2%')
       }} >
         <View style={{
           flexDirection: 'row',
-          backgroundColor: 'white',
+          // backgroundColor: 'white',
+          backgroundColor: colorMode === 'dark' ? "#000" : 'white',
           paddingTop: 15,
           height: 60,
           height: 50,
@@ -281,14 +281,14 @@ const ScreenSaldos = () => {
 
         <View style={{
           marginTop: 10,
-          backgroundColor: "#F5F8FF",
+          // backgroundColor: colorMode === 'dark' ? "#000" : '#F5F8FF',
           overflow: "hidden",
           paddingBottom: 20
         }}>
           <FlatList
             data={saldos}
             // style={{ height: (Dimensions.get('window').height / 2) - 10 }}
-            ItemSeparatorComponent={() => <View style={{ marginVertical: 4 }}></View>}
+            ItemSeparatorComponent={() => <View style={{ marginVertical: 4, backgroundColor: 'red' }}></View>}
             renderItem={({ item }) => <CoinCard item={item} onPress={() => { }} />}
             keyExtractor={(item) => item.id}
             showsVerticalScrollIndicator={false}
