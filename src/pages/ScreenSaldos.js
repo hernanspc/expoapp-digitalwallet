@@ -70,6 +70,7 @@ const ScreenSaldos = () => {
   const navigation = useNavigation();
   const user = useSelector((state) => state.user)
 
+  console.log('user ', user)
   const cargarDatosMenu = async () => {
     const postBody = {
       empresa: EMPRESA_APK,
@@ -80,7 +81,7 @@ const ScreenSaldos = () => {
     };
 
     setLoadingData(true);
-    const res = await fetch(API_BASE_URL + apis.TSP_CARGAR_DATOS_MENU_TRANSFERIDOR, {
+    await fetch(API_BASE_URL + apis.TSP_CARGAR_DATOS_MENU_TRANSFERIDOR, {
       method: "POST",
       body: JSON.stringify(postBody),
       headers: {
@@ -105,7 +106,7 @@ const ScreenSaldos = () => {
       const firstLaunch = await AsyncStorage.getItem("@firstLaunch");
       if (firstLaunch === null) navigation.navigate("Onboarding");
     }
-    navigation.navigate("Onboarding");
+    // navigation.navigate("Onboarding");
     checkFirstLaunch();
     cargarDatosMenu();
   }, []);
@@ -177,154 +178,153 @@ const ScreenSaldos = () => {
 
 
   return (
-    // <View style={{ flex: 1 }} >
-    //   {/* Header */}
-    //   <LinearGradient start={{ x: 0.0, y: 0.4 }} end={{ x: 0.5, y: 1.0 }} location={[0, 1]} colors={['#2D97DA', '#2249D6']} style={{ flex: 1.2, flexDirection: 'column' }} >
-    //     <Header
-    //       containerStyle={{
-    //         height: 50,
-    //         paddingHorizontal: SIZES.padding,
-    //         marginTop: 40,
-    //         alignItems: 'center',
-    //       }}
-    //       title={''}
-    //       leftComponent={
-    //         <TouchableOpacity
-    //           style={{
-    //             width: 40,
-    //             height: 40,
-    //             alignItems: 'center',
-    //             justifyContent: 'center',
-    //             borderWidth: 1,
-    //             borderColor: COLORS.white,
-    //             // backgroundColor: 'white',
-    //             borderRadius: SIZES.radius,
-    //           }}
-    //           onPress={() => navigation.openDrawer()}
-    //         >
-    //           {/* <Image source={icons.menu} /> */}
-    //           <MenuRight />
-    //         </TouchableOpacity>
-    //       }
-    //       rightComponent={
-    //         <TouchableOpacity
-    //           style={{
-    //             borderRadius: SIZES.radius,
-    //             alignItems: 'center',
-    //             justifyContent: 'center',
-    //           }}
-    //         >
-    //           <Image
-    //             // source={dummyData.myProfile?.profile_image}
-    //             source={{ uri: 'https://yt3.ggpht.com/vPYy-zeU9o6j98WyhS_r5HkMelB9vD--AwzUKB0Xd7Wcm5Qhza4iwOyS8fiGjawcNV3y17a8=s88-c-k-c0x00ffffff-no-rj-mo' }}
-    //             style={{ width: 40, height: 40, borderRadius: SIZES.radius }}
-    //           />
+    <View style={{ flex: 1 }} >
+      {/* Header */}
+      <LinearGradient start={{ x: 0.0, y: 0.4 }} end={{ x: 0.5, y: 1.0 }} location={[0, 1]} colors={['#2D97DA', '#2249D6']} style={{ flex: 1.2, flexDirection: 'column' }} >
+        <Header
+          containerStyle={{
+            height: 50,
+            paddingHorizontal: SIZES.padding,
+            marginTop: 40,
+            alignItems: 'center',
+          }}
+          title={''}
+          leftComponent={
+            <TouchableOpacity
+              style={{
+                width: 40,
+                height: 40,
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderWidth: 1,
+                borderColor: COLORS.white,
+                // backgroundColor: 'white',
+                borderRadius: SIZES.radius,
+              }}
+              onPress={() => navigation.openDrawer()}
+            >
+              {/* <Image source={icons.menu} /> */}
+              <MenuRight />
+            </TouchableOpacity>
+          }
+        // rightComponent={
+        //   <TouchableOpacity
+        //     style={{
+        //       borderRadius: SIZES.radius,
+        //       alignItems: 'center',
+        //       justifyContent: 'center',
+        //     }}
+        //   >
+        //     <Image
+        //       // source={dummyData.myProfile?.profile_image}
+        //       source={{ uri: 'https://yt3.ggpht.com/vPYy-zeU9o6j98WyhS_r5HkMelB9vD--AwzUKB0Xd7Wcm5Qhza4iwOyS8fiGjawcNV3y17a8=s88-c-k-c0x00ffffff-no-rj-mo' }}
+        //       style={{ width: 40, height: 40, borderRadius: SIZES.radius }}
+        //     />
+        //   </TouchableOpacity>
+        // }
+        />
 
-    //         </TouchableOpacity>
-    //       }
-    //     />
-    //     <View style={{ flexDirection: 'column', marginTop: hp('1%'), paddingHorizontal: '5%' }} >
-    //       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }} >
-    //         {/* Welcome message and name */}
-    //         <View style={{ flexDirection: 'column' }} >
-    //           <Text style={{ fontFamily: 'Roboto-Regular', fontSize: 16, color: '#fff' }} >Bienvenido de nuevo</Text>
-    //           <Text style={{ fontFamily: 'Poppins-SemiBold', color: '#fff', fontSize: 22 }} >Yaser</Text>
-    //         </View>
-
-    //         {/* Bell icon and profile pic */}
-    //         {/* <View style={{ flexDirection: 'row', alignItems: 'center' }} >
-    //           <Image source={{ uri: 'https://lh3.googleusercontent.com/a/ALm5wu1oHfVK-BQwHbTMZKJpvkWv0D2XgfQTLB_EaVEO=s192-c-rg-br100' }} resizeMode='cover' style={{ width: 40, height: 40, borderRadius: 20, marginLeft: 15 }} />
-    //         </View> */}
-    //       </View>
-
-    //       {/* amount  */}
-    //       <View style={{ flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', alignItems: 'center' }} >
-    //         {/* Amount */}
-    //         <View style={{ flexDirection: 'column' }} >
-    //           <Text style={{ color: '#fff', fontSize: 28, fontFamily: 'Roboto-Bold' }} >$32,7456.68</Text>
-    //         </View>
-    //         {/* profit loss indicator */}
-    //         {/* profit loss indicator */}
-    //         <ProfitIndicator type="I" percentage_change={20} />
-    //       </View>
-    //     </View>
-
-    //   </LinearGradient>
-
-    //   <View style={{ flex: 2.5, backgroundColor: '#F5F8FF', paddingHorizontal: wp('5%') }} >
-    //     <View style={{
-    //       flexDirection: 'row',
-    //       backgroundColor: 'white',
-    //       height: hp('9%'),
-    //       width: '100%',
-    //       alignItems: 'center',
-    //       justifyContent: 'space-around',
-    //       borderRadius: 10,
-    //       borderWidth: 1,
-    //       borderColor: 'rgba(255,255,255,0.1)', elevation: 10, shadowColor: '#000', shadowRadius: 10, marginTop: -25
-    //     }} >
-    //       <SectionTop operations={operations} />
-    //     </View>
-    //     <ScrollView
-    //       showsVerticalScrollIndicator={false}
-    //     >
-    //       <CardItem />
-    //       <CardItem />
-    //       <CardItem />
-    //       <CardItem />
-    //       <CardItem />
-    //       <CardItem />
-    //     </ScrollView>
-
-
-    //   </View>
-    // </View>
-    <View style={{ height: "100%", backgroundColor: '#F5F8FF' }}>
-      <View style={styles.headerbar}>
-        <TouchableOpacity>
-          <View>
-            <View style={{ color: "#ADB7C3", width: 20, height: 3, marginVertical: 5, backgroundColor: "#ADB7C3" }}></View>
-            <View style={{ color: "#ADB7C3", width: 15, height: 3, backgroundColor: "#ADB7C3" }}></View>
-            <View style={{ color: "#ADB7C3", width: 10, height: 3, marginVertical: 5, backgroundColor: "#ADB7C3" }}></View>
-          </View>
-        </TouchableOpacity>
-        <Text style={{ fontSize: 25, fontWeight: "500", color: "#4E5B69" }}>Wallets</Text>
-        <TouchableOpacity><Ionicons name="wallet" size={26} color={"#ADB7C3"} /></TouchableOpacity>
-      </View>
-
-      <View style={{ marginHorizontal: 20 }}>
-        <View>
-          <WalletCoinCard item={{ name: "Total Wallet Balance", cryptobalance: "$39.584", imgsrc: wallet }} />
-          <View style={styles.filters}>
-            <Text style={{ color: "#ADB7C3" }}>Sorted by higher %</Text>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <Text style={{ color: "#ADB7C3" }}>24 H</Text>
-              <Ionicons name="chevron-down-outline" size={18} color={"#ADB7C3"} />
+        <View style={{ flexDirection: 'column', marginTop: hp('1%'), paddingHorizontal: '5%' }} >
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }} >
+            <View style={{ flexDirection: 'column' }} >
+              <Text style={{ fontFamily: 'Roboto-Regular', fontSize: 16, color: '#fff' }} >Bienvenido de nuevo</Text>
+              <Text style={{ fontFamily: 'Poppins-SemiBold', color: '#fff', fontSize: 22 }} >{user ? user?.APELLIDOS_Y_NOMBRES : ''}</Text>
+            </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }} >
+              <Image source={{ uri: 'https://lh3.googleusercontent.com/a/ALm5wu1oHfVK-BQwHbTMZKJpvkWv0D2XgfQTLB_EaVEO=s192-c-rg-br100' }} resizeMode='cover' style={{ width: 40, height: 40, borderRadius: 20, marginLeft: 15 }} />
             </View>
           </View>
+          <View style={{ flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', alignItems: 'center' }} >
+            <View style={{ flexDirection: 'column' }} >
+              <Text style={{ color: '#fff', fontSize: 28, fontFamily: 'Roboto-Bold' }} >$32,7456.68</Text>
+            </View>
+            <ProfitIndicator type="I" percentage_change={20} />
+          </View>
         </View>
-        {/* <View style={{ paddingVertical: 5, }}>
-          <Card />
-        </View> */}
+        {/* <WalletCoinCard item={{ name: "Total Wallet Balance", cryptobalance: "$39.584", imgsrc: wallet }} /> */}
+      </LinearGradient>
 
+      <View style={{ flex: 2.5, backgroundColor: '#F5F8FF', paddingHorizontal: wp('5%') }} >
         <View style={{
-          marginTop: 10,
-          backgroundColor: "#F5F8FF",
-          overflow: "hidden",
-          marginBottom: 10
-        }}>
-          <FlatList
-            data={CRYPTOCURRENCIES}
-            style={{ height: (Dimensions.get('window').height / 2) - 10 }}
-            ItemSeparatorComponent={() => <View style={{ marginVertical: 8 }}></View>}
-            renderItem={({ item }) => <CoinCard item={item} onPress={() => nav.navigate("walletdetails", item)} />}
-            keyExtractor={(item) => item.id}
-            showsVerticalScrollIndicator={false}
-          />
+          flexDirection: 'row',
+          backgroundColor: 'white',
+          height: hp('9%'),
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'space-around',
+          borderRadius: 10,
+          borderWidth: 1,
+          borderColor: 'rgba(255,255,255,0.1)', elevation: 10, shadowColor: '#000', shadowRadius: 10, marginTop: -25
+        }} >
+          <SectionTop operations={operations} />
         </View>
-      </View>
 
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+        >
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+        </ScrollView>
+      </View>
     </View>
+
+
+
+
+    // <View style={{ height: "100%", backgroundColor: '#F5F8FF' }}>
+    //   <View style={styles.headerbar}>
+    //     <TouchableOpacity>
+    //       <View>
+    //         <View style={{ color: "#ADB7C3", width: 20, height: 3, marginVertical: 5, backgroundColor: "#ADB7C3" }}></View>
+    //         <View style={{ color: "#ADB7C3", width: 15, height: 3, backgroundColor: "#ADB7C3" }}></View>
+    //         <View style={{ color: "#ADB7C3", width: 10, height: 3, marginVertical: 5, backgroundColor: "#ADB7C3" }}></View>
+    //       </View>
+    //     </TouchableOpacity>
+    //     <Text style={{ fontSize: 25, fontWeight: "500", color: "#4E5B69" }}>Wallets</Text>
+    //     <TouchableOpacity><Ionicons name="wallet" size={26} color={"#ADB7C3"} /></TouchableOpacity>
+    //   </View>
+
+    //   <View style={{ marginHorizontal: 20 }}>
+    //     <View>
+    //       <WalletCoinCard item={{ name: "Total Wallet Balance", cryptobalance: "$39.584", imgsrc: wallet }} />
+    //       <View style={styles.filters}>
+    //         <Text style={{ color: "#ADB7C3" }}>Sorted by higher %</Text>
+    //         <View style={{ flexDirection: "row", alignItems: "center" }}>
+    //           <Text style={{ color: "#ADB7C3" }}>24 H</Text>
+    //           <Ionicons name="chevron-down-outline" size={18} color={"#ADB7C3"} />
+    //         </View>
+    //       </View>
+    //     </View>
+    //     <View style={{ paddingVertical: 5, }}>
+    //       <Card />
+    //     </View>
+
+    //     <View style={{
+    //       marginTop: 10,
+    //       backgroundColor: "#F5F8FF",
+    //       overflow: "hidden",
+    //       marginBottom: 10
+    //     }}>
+    //       <FlatList
+    //         data={CRYPTOCURRENCIES}
+    //         style={{ height: (Dimensions.get('window').height / 2) - 10 }}
+    //         ItemSeparatorComponent={() => <View style={{ marginVertical: 8 }}></View>}
+    //         renderItem={({ item }) => <CoinCard item={item} onPress={() => nav.navigate("walletdetails", item)} />}
+    //         keyExtractor={(item) => item.id}
+    //         showsVerticalScrollIndicator={false}
+    //       />
+    //     </View>
+    //   </View>
+
+    // </View>
   )
 }
 

@@ -26,15 +26,15 @@ export const WalletCoinCard = (props) => {
         </View>
       </View>
       <View style={{ flexDirection: "row", marginTop: 10, justifyContent: "space-between" }}>
-        <Text style={{ fontSize: 30, marginLeft: 5, color: "#4E5B69" }}>$33.212</Text>
+        <Text style={{ fontSize: 30, marginLeft: 5, color: "#4E5B69", fontFamily: 'Roboto-Bold' }}>$33.212</Text>
         {/* <View style={{borderRadius:20,backgroundColor:GREEN,height:25,paddingHorizontal:10,paddingVertical:5}}>
                 <Text style={{color:"#fff",fontWeight:"bold",fontSize:12}}>+ 3.55%</Text>
               </View> */}
       </View>
       {/* <Text style={{ marginTop: 5, color: LIGHTGREY, fontSize: 20 }}>7.2131231 BTC</Text> */}
-      <View style={{ flexDirection: "row", justifyContent: "center", marginBottom: 20, height: 20 }}>
+      {/* <View style={{ flexDirection: "row", justifyContent: "center", marginBottom: 20, height: 20 }}>
         <Image style={{ marginTop: 30 }} source={expandchevron}></Image>
-      </View>
+      </View> */}
     </CustomCard>
   );
 }
