@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -11,6 +11,7 @@ import MenuRight from '../assets/svg/Icons/menu-right';
 import { API_BASE_URL, EMPRESA_APK } from '../utils/constants';
 import { apis } from '../utils/const';
 import { useSelector } from 'react-redux';
+import CardItem from '../components/CardItem';
 
 const SectionTop = ({ operations }) => {
 
@@ -178,10 +179,20 @@ const ScreenSaldos = () => {
 
       </LinearGradient>
 
-      <View style={{ flex: 2.5, backgroundColor: '#fff', paddingHorizontal: wp('5%') }} >
+      <View style={{ flex: 2.5, backgroundColor: '#F5F8FF', paddingHorizontal: wp('5%') }} >
         <View style={{ flexDirection: 'row', backgroundColor: '#fff', height: hp('13%'), width: '100%', alignItems: 'center', justifyContent: 'space-around', borderRadius: 10, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)', elevation: 10, shadowColor: '#000', shadowRadius: 10, marginTop: -25 }} >
           <SectionTop operations={operations} />
         </View>
+        <ScrollView>
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+          <CardItem />
+        </ScrollView>
+
+
       </View>
     </View>
   )
